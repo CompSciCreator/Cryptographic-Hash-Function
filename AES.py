@@ -1,4 +1,4 @@
-# Andrew Paolella , (insert names here)
+# Andrew Paolella , Jessica Kressner (insert names here)
 # ! pip install cryptography (python package) 
 
 import os
@@ -27,7 +27,7 @@ class AES:
         key = Fernet.generate_key()  # Replace with the actual key used for encryption
         f = Fernet(key)
         decrypted_message = f.decrypt(encrypted_message.encode()).decode('utf-8')
-    return decrypted_message
+        return decrypted_message
 
 
 
