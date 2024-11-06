@@ -1,3 +1,10 @@
+#################################################################
+
+## ATTENTION: This file is no longer in use for the time being ##
+##            This code is now implemented in AES.py           ##
+
+#################################################################
+
 import os
 import base64
 import hashlib
