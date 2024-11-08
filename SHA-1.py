@@ -1,21 +1,31 @@
-#Andrew Paolella 
+# Andrew Paolella, Joe Marchione
 
-'''This code uses SHA-256, which provides a 256-bit output and is much more secure than SHA-1, 
-especially regarding collision resistance.'''
+# sha-1 hashing algorithm
 
-import hashlib # haslib Documentation: https://docs.python.org/3/library/hashlib.html
+# constants
+H0 = 0x67452301
+H1 = 0xEFCDAB89
+H2 = 0x98BADCFE
+H3 = 0x10325476
+H4 = 0xC3D2E1F0
 
-# String to hash
-Secret_Key = "Follow the white rabbit, Neo."
+# circular left shift operation rotate integer 'n' by 'b' number of bits
+def left_rotate(n, b):
+    # (n << b) shifts the integer n left by b bits, any bits that 'fall off' are discarded
+    # (n >> (32 - b)) shifts n right by (32 - b) bits, bringing the leftmost bits to the right side
+    # a bitwise 'OR' combines the results achieving circular rotation
+    # 0xFFFFFFFF masks the result to ensure it fits within 32 bits
+    return ((n << b) | (n >> (32 - b))) & 0xFFFFFFFF # bit width of integer is 32 (sha-1 default)
 
-# Create a SHA-1 hash object
-hash_object = hashlib.sha1(Secret_Key.encode())
+# the algorithm
+def sha1(message):
 
-# Get the hexadecimal representation of the hash    
-hex_dig = hash_object.hexdigest()
+    return
 
-'''hexdigest is returned as a string object of double length, containing only hexadecimal digits. 
-This may be used to exchange the value safely in email or other non-binary environments.'''
+# example usage
+message = input("Enter plaintest: ")
 
-# Print hash 
-print(hex_dig)
+ciphertext = sha1(message)
+
+print(f"Plaintext: {message}")
+print(f"Ciphertext (SHA-1): {ciphertext}")
