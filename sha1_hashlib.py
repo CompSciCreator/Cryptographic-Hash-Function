@@ -21,30 +21,27 @@ def hash_plaintext(plaintext):
 
     return hashed_output
 
-
-plaintext = input("Enter plaintext: ")
-
-ciphertext = hash_plaintext(plaintext)
-
-print(f"Plaintext: {plaintext}")
-print(f"Ciphertext (SHA-1): {ciphertext}")
-
 # Writing output file to desktop - AP 
-def save_file(plaintext):
-
-    # Function call. It invokes the hash_plaintext function, Takes plaintext input, calculates the SHA-1 hash of the plaintext. 
-    ciphertext = hash_plaintext(plaintext)
+def save_file(ciphertext):
 
     # Get the user's desktop path. os.path.join(): Join one or more path components. os.path.expanduser(): expands initial path component ~ or ~user in given path to user’s home directory. 
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")  
+    desktop_path = os.path.join(os.path.expanduser("~"), "Documents")  # updated for compatibilty 
         
     # Create the file path
     path = os.path.join(desktop_path, "haslib_output.txt")
 
     # Write the hash to the file , will be created if doesnt exist 
     with open(path, "w") as f:
-        f.write(ciphertext)
+        f.write(f"plaintext: {plaintext}")
+        f.write(f"\nciphertext: {ciphertext}")
 
         print("Data has been saved successfully.")
 
-save_file(plaintext)
+
+plaintext = input("Enter plaintext: ")
+ciphertext = hash_plaintext(plaintext)
+
+print(f"Plaintext: {plaintext}")
+print(f"Ciphertext (SHA-1): {ciphertext}")
+
+save_file(ciphertext)
