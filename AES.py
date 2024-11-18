@@ -79,7 +79,7 @@ def decrypt(encrypted_text, secret_key, salt):
         
 # Example usage
 if __name__ == "__main__":
-    original_string = "hello"
+    original_string = "Follow the White Rabbit, Neo."
     encrypted_string = encrypt(original_string, SECRET_KEY, SALT)
     decrypted_string = decrypt(encrypted_string, SECRET_KEY, SALT)
 
