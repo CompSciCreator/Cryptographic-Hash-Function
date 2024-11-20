@@ -1,5 +1,3 @@
-# Joe Marchione , Andrew Paolella
-
 # Example implementation of the SHA-1 cryptographic hash algorithm
 #  using the built in hashlib library. 
 # We will use this for testing against our own SHA-1 implementation.

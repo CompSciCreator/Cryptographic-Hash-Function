@@ -1,5 +1,3 @@
-# Andrew Paolella, Joe Marchione
-
 # sha-1 hashing algorithm
 
 import struct
