@@ -20,18 +20,20 @@ def left_rotate(n, b):
 # the algorithm
 def sha1(message):
     # padding the message
+    # converts to bytes then converts to bits
     message = bytearray(message, 'ascii')
     original_length = len(message) * 8
 
     # append the bit '1' to the message
     message.append(0x80)
 
-    # append 0 <= k < 512 bits mod '0', so that the resulting length in bits
+    # appends enough 0's after the '1' so that the resulting length in bits
     # is congruent to 488 mod 512
     while (len(message) * 8) % 512 != 448:
         message.append(0)
 
     # append the original message length as a 64-bit big-endian integer
+    # to ensure the message length is a multiple of 512.
     # this completes our padding
     message += struct.pack('>Q', original_length)
 
@@ -42,7 +44,7 @@ def sha1(message):
     h0, h1, h2, h3, h4 = H0, H1, H2, H3, H4
 
     for chunk in chunks:
-        # break 512-bit chunk into sixteen 32-bit big-endian words w[i]
+        # break 512-bit chunk into sixteen 32-bit words w[i]
         w = list(struct.unpack('>16I', chunk))
 
         # extend the sixteen 32-bit words into eighty 32-bit words
@@ -74,7 +76,7 @@ def sha1(message):
             # 'temp' calculates a new value to be used for 'a' in the next iteration
             # by rotating the bits left by 5 and adding other variables to it to
             # ensure non-linearity and diffusion
-            
+
             # 'a' is the most active variable, 'b', 'c', and 'd' are used in logical operations
             # 'e' acts as a passive accumulator to ensure that small changes in the input
             # propegate through all 80 rounds.
